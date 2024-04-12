@@ -57,7 +57,8 @@ for varname in varnames:
             data = np.reshape(data, [nyr, 12])
         data = np.ma.average(data, axis=1, weights=months)
     
-    var = ncfile_d.createVariable(varname, ncvar.dtype, ncvar.dimensions, fill_value=FillValue)
+    var = ncfile_d.createVariable(varname, ncvar.dtype, ncvar.dimensions, fill_value=FillValue, 
+          zlib=True, complevel=5)
 
     attdict = ncvar.__dict__ 
     # remove the fillvalue attribute and others we don't want
@@ -65,5 +66,5 @@ for varname in varnames:
         if rematt in attdict: 
             del attdict[rematt]
     var.setncatts(attdict)
-
-    var[:] = data[:]    
+    if len(data.shape) > 0:
+        var[:] = data[:]    

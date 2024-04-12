@@ -1,0 +1,4 @@
+#!/bin/bash
+recycle_bin=/scratch/y99/dkh157/recycle_bin/
+mv "$@" ${recycle_bin}
+

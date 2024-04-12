@@ -58,7 +58,8 @@ for varname in varnames:
             data = np.reshape(data, [nyr, 12])
         data = np.ma.mean(data, axis=0)
     
-    var = ncfile_d.createVariable(varname, ncvar.dtype, ncvar.dimensions, fill_value=FillValue)
+    var = ncfile_d.createVariable(varname, ncvar.dtype, ncvar.dimensions, fill_value=FillValue,
+          zlib=True, complevel=5)
 
     attdict = ncvar.__dict__ 
     # remove the fillvalue attribute and others we don't want
