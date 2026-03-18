@@ -23,7 +23,7 @@ if len(tmask.shape) == 3:
     tmask = tmask[np.newaxis, :, :, :]
 
 glob_atts = ncfile_i.__dict__
-newhist = f'./remask_restart.py -i {args.input} -o {args.output} -m {args.mask} \n'
+newhist = f'remask_restart.py -i {args.input} -o {args.output} -m {args.mask} \n'
 if 'history' in glob_atts:
     glob_atts['history'] = newhist + glob_atts['history']
 else:
