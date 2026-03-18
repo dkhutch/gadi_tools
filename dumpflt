@@ -1,0 +1,8 @@
+#!/bin/bash
+for x in "$@"; do
+echo $x 
+ncdump -h $x | grep UNLIMITED
+ncdump -h $x | grep float 
+ncdump -h $x | grep double
+# ncdump -h $x | grep history
+done

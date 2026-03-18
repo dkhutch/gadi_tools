@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if [ $# -lt 2 ]
+then
+        echo "Usage: pdfcomb file1.pdf file2.pdf [...]"
+        echo "Must have at least 2 input files"
+        echo "output will be written to 'combine.pdf'"
+        exit 1
+fi
+gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=combine.pdf -dBATCH "$@"

@@ -26,7 +26,7 @@ foreach infile $argv {
    # set outfile [file tail [file rootname $infile].nc]
 
 # Make outfile the same as infile with ".nc" extension
-   set outfile ${infile}.nc
+   set outfile ${infile}.pft.nc
 
 #  Read input file
    readfile $filetype $infile

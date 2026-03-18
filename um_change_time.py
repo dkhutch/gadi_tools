@@ -5,13 +5,15 @@
 # The latter may not be strictly necessary but it makes looking at file with
 # xconv less confusing.
 
-import getopt, sys
+import argparse
 import umfile
 from um_fileheaders import *
 
-ifile = sys.argv[1]
+parser = argparse.ArgumentParser(description="Change the initial and valid date of a UM dump file")
+parser.add_argument('input', help="UM restart file to be modified")
+args = parser.parse_args()
 
-f = umfile.UMFile(ifile, "r+")
+f = umfile.UMFile(args.input, "r+")
 
 print("Initial Time", f.fixhd[FH_DTYear], f.fixhd[FH_DTMonth], f.fixhd[FH_DTDay], 
       f.fixhd[FH_DTHour], f.fixhd[FH_DTMinute], f.fixhd[FH_DTSecond])
